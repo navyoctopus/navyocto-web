@@ -46,10 +46,10 @@
 
         <!-- Custom Tools & Apps -->
         <div
-          class="group p-8 rounded-2xl bg-white border border-navy-100 border-t-2 border-t-accent-300 hover:shadow-xl hover:border-t-accent-500 transition-all duration-300"
+          class="group p-8 rounded-2xl bg-white border border-navy-100 border-t-2 border-t-primary-300 hover:shadow-xl hover:border-t-primary-500 transition-all duration-300"
         >
           <div
-            class="w-12 h-12 rounded-xl bg-accent-100 text-accent-600 flex items-center justify-center mb-5 group-hover:bg-accent-600 group-hover:text-white transition-colors duration-300"
+            class="w-12 h-12 rounded-xl bg-primary-100 text-primary-600 flex items-center justify-center mb-5 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300"
           >
             <svg
               class="w-6 h-6"
@@ -76,10 +76,10 @@
 
         <!-- Improve Existing Sites -->
         <div
-          class="group p-8 rounded-2xl bg-white border border-navy-100 border-t-2 border-t-accent-300 hover:shadow-xl hover:border-t-accent-500 transition-all duration-300"
+          class="group p-8 rounded-2xl bg-white border border-navy-100 border-t-2 border-t-primary-300 hover:shadow-xl hover:border-t-primary-500 transition-all duration-300"
         >
           <div
-            class="w-12 h-12 rounded-xl bg-accent-100 text-accent-600 flex items-center justify-center mb-5 group-hover:bg-accent-600 group-hover:text-white transition-colors duration-300"
+            class="w-12 h-12 rounded-xl bg-primary-100 text-primary-600 flex items-center justify-center mb-5 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300"
           >
             <svg
               class="w-6 h-6"

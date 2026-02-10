@@ -18,7 +18,7 @@
         <div class="grid md:grid-cols-4 gap-8 md:gap-6 relative">
           <!-- Connecting line (desktop only) -->
           <div
-            class="hidden md:block absolute top-10 left-[calc(12.5%+1rem)] right-[calc(12.5%+1rem)] h-0.5 bg-accent-400/40"
+            class="hidden md:block absolute top-10 left-[calc(12.5%+1rem)] right-[calc(12.5%+1rem)] h-0.5 bg-primary-400/40"
           />
 
           <div
@@ -28,9 +28,9 @@
           >
             <!-- Step number -->
             <div
-              class="relative z-10 w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm border-2 border-accent-400/30 flex items-center justify-center mx-auto mb-5"
+              class="relative z-10 w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm border-2 border-primary-400/30 flex items-center justify-center mx-auto mb-5"
             >
-              <span class="text-2xl font-bold text-accent-400">{{
+              <span class="text-2xl font-bold text-primary-400">{{
                 i + 1
               }}</span>
             </div>

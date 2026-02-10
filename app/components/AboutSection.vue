@@ -27,13 +27,13 @@
             :key="i"
             :class="[
               'bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 border-t-2 hover:bg-white/10 transition-all',
-              i % 2 === 0 ? 'border-t-primary-500 hover:border-t-primary-400' : 'border-t-accent-400 hover:border-t-accent-300',
+               'border-t-primary-500 hover:border-t-primary-400',
             ]"
           >
             <div
               :class="[
                 'w-10 h-10 rounded-lg flex items-center justify-center mb-4',
-                i % 2 === 0 ? 'bg-primary-600/20 text-primary-400' : 'bg-accent-500/20 text-accent-400',
+                'bg-primary-600/20 text-primary-400',
               ]"
             >
               <svg

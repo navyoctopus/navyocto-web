@@ -16,19 +16,19 @@
             'flex items-start gap-4 p-5 rounded-xl bg-white border border-navy-100 border-l-4 transition-shadow hover:shadow-md',
             index % 2 === 0
               ? 'border-l-primary-400'
-              : 'border-l-accent-400',
+              : 'border-l-primary-400',
           ]"
         >
           <div
             :class="[
               'flex-shrink-0 w-6 h-6 mt-0.5 rounded-full flex items-center justify-center',
-              index % 2 === 0 ? 'bg-primary-100' : 'bg-accent-100',
+              index % 2 === 0 ? 'bg-primary-100' : 'bg-primary-100',
             ]"
           >
             <svg
               :class="[
                 'w-3.5 h-3.5',
-                index % 2 === 0 ? 'text-primary-600' : 'text-accent-600',
+                index % 2 === 0 ? 'text-primary-600' : 'text-primary-600',
               ]"
               fill="none"
               viewBox="0 0 24 24"
