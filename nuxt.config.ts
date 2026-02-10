@@ -34,4 +34,17 @@ export default defineNuxtConfig({
       ],
     },
   },
+
+  hooks: {
+    'pages:extend'(pages) {
+      const sections = ['about', 'services', 'process', 'work', 'contact']
+      sections.forEach((section) => {
+        pages.push({
+          name: section,
+          path: `/${section}`,
+          file: '~/pages/index.vue',
+        })
+      })
+    },
+  },
 })

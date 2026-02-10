@@ -48,12 +48,12 @@
 
       <p class="mt-14 text-lg text-slate-600">
         Sound familiar?
-        <a
-          href="#contact"
+        <NuxtLink
+          to="/contact"
           class="text-primary-600 font-semibold hover:underline underline-offset-4 decoration-2"
         >
           Let's start a conversation.
-        </a>
+        </NuxtLink>
       </p>
     </div>
   </section>

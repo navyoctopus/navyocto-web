@@ -10,10 +10,9 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 lg:h-20">
         <!-- Logo -->
-        <a
-          href="#"
+        <NuxtLink
+          to="/"
           class="flex items-center"
-          @click.prevent="scrollToTop"
         >
           <img
             src="/PinkNavyLogo.png"
@@ -23,14 +22,14 @@
               !scrolled && 'brightness-0 invert',
             ]"
           />
-        </a>
+        </NuxtLink>
 
         <!-- Desktop Nav -->
         <div class="hidden md:flex items-center gap-8">
-          <a
+          <NuxtLink
             v-for="link in navLinks"
-            :key="link.href"
-            :href="link.href"
+            :key="link.to"
+            :to="link.to"
             :class="[
               'text-sm font-medium transition-colors',
               scrolled
@@ -39,13 +38,13 @@
             ]"
           >
             {{ link.label }}
-          </a>
-          <a
-            href="#contact"
+          </NuxtLink>
+          <NuxtLink
+            to="/contact"
             class="bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors"
           >
             Get in Touch
-          </a>
+          </NuxtLink>
         </div>
 
         <!-- Mobile menu button -->
@@ -101,22 +100,22 @@
         class="md:hidden bg-white shadow-lg border-t border-slate-100"
       >
         <div class="px-4 py-4 space-y-1">
-          <a
+          <NuxtLink
             v-for="link in navLinks"
-            :key="link.href"
-            :href="link.href"
+            :key="link.to"
+            :to="link.to"
             class="block px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium transition-colors"
             @click="mobileOpen = false"
           >
             {{ link.label }}
-          </a>
-          <a
-            href="#contact"
+          </NuxtLink>
+          <NuxtLink
+            to="/contact"
             class="block px-4 py-3 bg-primary-600 text-white text-center rounded-lg font-semibold mt-3"
             @click="mobileOpen = false"
           >
             Get in Touch
-          </a>
+          </NuxtLink>
         </div>
       </div>
     </Transition>
@@ -128,16 +127,12 @@ const scrolled = ref(false)
 const mobileOpen = ref(false)
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Process', href: '#process' },
-  { label: 'Work', href: '#work' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', to: '/about' },
+  { label: 'Services', to: '/services' },
+  { label: 'Process', to: '/process' },
+  { label: 'Work', to: '/work' },
+  { label: 'Contact', to: '/contact' },
 ]
-
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' })
-}
 
 function handleScroll() {
   scrolled.value = window.scrollY > 50

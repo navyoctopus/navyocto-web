@@ -22,13 +22,13 @@
             Navigation
           </h4>
           <ul class="space-y-2.5">
-            <li v-for="link in links" :key="link.href">
-              <a
-                :href="link.href"
+            <li v-for="link in links" :key="link.to">
+              <NuxtLink
+                :to="link.to"
                 class="text-slate-400 hover:text-white text-sm transition-colors"
               >
                 {{ link.label }}
-              </a>
+              </NuxtLink>
             </li>
           </ul>
         </div>
@@ -42,8 +42,8 @@
             Ready to talk about your project? Drop us a message and we'll get
             back to you.
           </p>
-          <a
-            href="#contact"
+          <NuxtLink
+            to="/contact"
             class="inline-flex items-center gap-1.5 text-sm font-medium text-accent-400 hover:text-accent-300 transition-colors"
           >
             Start a conversation
@@ -60,7 +60,7 @@
                 d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
               />
             </svg>
-          </a>
+          </NuxtLink>
         </div>
       </div>
 
@@ -82,10 +82,10 @@
 const currentYear = new Date().getFullYear()
 
 const links = [
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'How It Works', href: '#process' },
-  { label: 'Recent Work', href: '#work' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', to: '/about' },
+  { label: 'Services', to: '/services' },
+  { label: 'How It Works', to: '/process' },
+  { label: 'Recent Work', to: '/work' },
+  { label: 'Contact', to: '/contact' },
 ]
 </script>

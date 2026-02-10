@@ -33,8 +33,8 @@
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-        <a
-          href="#contact"
+        <NuxtLink
+          to="/contact"
           class="inline-flex items-center justify-center bg-primary-600 hover:bg-primary-500 text-white px-8 py-4 rounded-xl font-semibold text-base transition-all shadow-lg shadow-primary-600/25 hover:shadow-primary-500/30 hover:-translate-y-0.5"
         >
           Get My Free Quote
@@ -51,14 +51,14 @@
               d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
             />
           </svg>
-        </a>
+        </NuxtLink>
 
-        <a
-          href="#work"
+        <NuxtLink
+          to="/work"
           class="inline-flex items-center justify-center border-2 border-white/20 hover:border-white/40 text-white px-8 py-4 rounded-xl font-semibold text-base transition-all hover:-translate-y-0.5"
         >
           See Recent Work
-        </a>
+        </NuxtLink>
       </div>
 
       <p class="text-sm text-slate-500 max-w-md mx-auto">
