@@ -26,10 +26,34 @@
         </p>
       </div>
 
+      <!-- Success message -->
+      <div
+        v-if="submitted"
+        class="text-center py-12"
+      >
+        <div class="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg class="w-8 h-8 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-white mb-2">Thanks! We'll be in touch.</h3>
+        <p class="text-slate-400">We usually respond within 24 hours.</p>
+      </div>
+
+      <!-- Form -->
       <form
+        v-else
         class="space-y-5"
         @submit.prevent="handleSubmit"
       >
+        <!-- Error message -->
+        <div
+          v-if="errorMessage"
+          class="bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3 text-red-300 text-sm"
+        >
+          {{ errorMessage }}
+        </div>
+
         <div>
           <label for="name" class="block text-sm font-medium text-slate-300 mb-2">
             Your name
@@ -40,7 +64,8 @@
             type="text"
             placeholder="Your name"
             required
-            class="w-full px-4 py-3.5 bg-white/10 border border-white/15 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+            :disabled="loading"
+            class="w-full px-4 py-3.5 bg-white/10 border border-white/15 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all disabled:opacity-50"
           />
         </div>
 
@@ -54,7 +79,8 @@
             type="email"
             placeholder="your.email@example.com"
             required
-            class="w-full px-4 py-3.5 bg-white/10 border border-white/15 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+            :disabled="loading"
+            class="w-full px-4 py-3.5 bg-white/10 border border-white/15 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all disabled:opacity-50"
           />
         </div>
 
@@ -68,21 +94,31 @@
             rows="5"
             placeholder="Tell us about your project..."
             required
-            class="w-full px-4 py-3.5 bg-white/10 border border-white/15 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
+            :disabled="loading"
+            class="w-full px-4 py-3.5 bg-white/10 border border-white/15 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none disabled:opacity-50"
           />
         </div>
 
         <button
           type="submit"
-          :disabled="submitted"
+          :disabled="loading"
           :class="[
-            'w-full py-4 rounded-xl font-semibold text-base transition-all',
-            submitted
-              ? 'bg-emerald-600 text-white cursor-default'
+            'w-full py-4 rounded-xl font-semibold text-base transition-all flex items-center justify-center gap-2',
+            loading
+              ? 'bg-primary-600/70 text-white/70 cursor-wait'
               : 'bg-primary-600 hover:bg-primary-500 text-white shadow-lg shadow-primary-600/25 hover:shadow-primary-500/30 hover:-translate-y-0.5',
           ]"
         >
-          {{ submitted ? 'Thanks! We\'ll be in touch.' : 'Get in Touch' }}
+          <svg
+            v-if="loading"
+            class="w-5 h-5 animate-spin"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+          </svg>
+          {{ loading ? 'Sending...' : 'Get in Touch' }}
         </button>
       </form>
     </div>
@@ -96,16 +132,31 @@ const form = reactive({
   message: '',
 })
 
+const loading = ref(false)
 const submitted = ref(false)
+const errorMessage = ref('')
 
-function handleSubmit() {
-  // TODO: Wire up form submission to your backend/email service
-  submitted.value = true
-  setTimeout(() => {
-    submitted.value = false
-    form.name = ''
-    form.email = ''
-    form.message = ''
-  }, 3000)
+async function handleSubmit() {
+  loading.value = true
+  errorMessage.value = ''
+
+  try {
+    await $fetch('/api/contact', {
+      method: 'POST',
+      body: {
+        name: form.name,
+        email: form.email,
+        message: form.message,
+      },
+    })
+
+    submitted.value = true
+  } catch (error: any) {
+    errorMessage.value =
+      error?.data?.statusMessage ||
+      'Something went wrong. Please try again or email us directly at info@navyoctopus.ie'
+  } finally {
+    loading.value = false
+  }
 }
 </script>

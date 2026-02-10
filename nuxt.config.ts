@@ -5,6 +5,11 @@ export default defineNuxtConfig({
 
   modules: ['@nuxtjs/tailwindcss'],
 
+  runtimeConfig: {
+    resendApiKey: process.env.RESEND_API_KEY || '',
+    resendFromEmail: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
+  },
+
   app: {
     head: {
       title: 'Navy Octopus | Digital Solutions for Irish Businesses',
